@@ -1,0 +1,108 @@
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
+import { Calendar, MapPin } from "lucide-react";
+
+export default function CartazesRedeComposta() {
+  const eventos = [
+    {
+      titulo: "Festa do Composto Vivo",
+      data: "12 de novembro",
+      local: "Jardim Comunitário da Rede Composta",
+      slogan: "Transforme seus resíduos em vida!",
+      texto:
+        "Junte-se a nós para um dia festivo em torno da compostagem e da natureza viva. Oficinas, degustações locais, música e trocas de experiências entre apaixonados pelo solo e curiosos pelo meio ambiente.",
+      link: "redecomposta.org/festa",
+      hashtags: ["#CompostoVivo", "#RedeCompostaViva"],
+    },
+    {
+      titulo: "Encontro de Parceiros da Rede",
+      data: "25 de novembro",
+      local: "Espaço EcoCité",
+      slogan: "Unidos pelo vivo, movidos pela ação.",
+      texto:
+        "Um momento de troca e co-criação entre associações, escolas, prefeituras e cidadãos engajados. Objetivo: fortalecer os laços, compartilhar conquistas e construir juntos os próximos projetos da Rede Composta.",
+      link: "redecomposta.org/parceiros",
+      hashtags: ["#RedeComposta", "#SolidariedadeEcológica"],
+    },
+    {
+      titulo: "Dia de Portas Abertas da Rede",
+      data: "8 de dezembro",
+      local: "Sede da Rede Composta",
+      slogan: "Mergulhe na cultura da permanência!",
+      texto:
+        "Descubra os bastidores da Rede Composta: visitas guiadas, exibição do documentário 'Cultura da Permanência', encontros com voluntários e oficinas para todas as idades.",
+      link: "redecomposta.org/portasabertas",
+      hashtags: ["#CulturaDaPermanencia", "#EcoParticipação"],
+    },
+    {
+      titulo: "Oficina: Compostagem em Casa",
+      data: "15 de novembro",
+      local: "Escola Verde do Bairro Central",
+      slogan: "Pequenos gestos, grandes mudanças.",
+      texto:
+        "Aprenda o básico da compostagem doméstica e transforme seus resíduos orgânicos em riqueza natural. Uma oficina prática, acolhedora e acessível para todos — mesmo sem jardim!",
+      link: "redecomposta.org/oficinas",
+      hashtags: ["#CompostagemFácil", "#RedeComposta"],
+    },
+    {
+      titulo: "Oficina: Permacultura e Biodiversidade",
+      data: "22 de novembro",
+      local: "Fazenda Urbana da Rede Composta",
+      slogan: "Cultivar harmonia, semear o futuro.",
+      texto:
+        "Aprenda os princípios da permacultura, descubra como criar um ecossistema equilibrado e como promover a biodiversidade local. Um momento de aprendizado e reconexão com a terra.",
+      link: "redecomposta.org/permacultura",
+      hashtags: ["#PermaculturaUrbana", "#RedeComposta"],
+    },
+    {
+      titulo: "Oficina: Escola Verde",
+      data: "5 de dezembro",
+      local: "Escola X",
+      slogan: "Sensibilizar, aprender e crescer com a natureza.",
+      texto:
+        "Um dia lúdico e educativo dedicado às crianças e educadores para descobrir a compostagem, a natureza e práticas ecológicas através de jogos e atividades.",
+      link: "redecomposta.org/escolaverde",
+      hashtags: ["#EducarParaOVivo", "#RedeComposta"],
+    },
+  ];
+
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6 bg-gradient-to-b from-emerald-50 to-white">
+      {eventos.map((evento, index) => (
+        <motion.div
+          key={index}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: index * 0.1 }}
+        >
+          <Card className="shadow-lg rounded-2xl border border-emerald-200 bg-white hover:shadow-xl transition-all">
+            <CardContent className="p-6 flex flex-col justify-between h-full">
+              <div>
+                <h2 className="text-2xl font-bold text-emerald-700 mb-1">{evento.titulo}</h2>
+                <p className="italic text-emerald-600 mb-3">{evento.slogan}</p>
+                <div className="flex items-center text-sm text-gray-600 mb-2">
+                  <Calendar className="w-4 h-4 mr-2" /> {evento.data}
+                </div>
+                <div className="flex items-center text-sm text-gray-600 mb-4">
+                  <MapPin className="w-4 h-4 mr-2" /> {evento.local}
+                </div>
+                <p className="text-gray-700 mb-4 leading-relaxed">{evento.texto}</p>
+              </div>
+              <div className="mt-4 flex flex-col gap-2">
+                <Button className="bg-emerald-600 text-white rounded-xl w-full hover:bg-emerald-700 transition-all">
+                  <a href={`https://${evento.link}`} target="_blank" rel="noopener noreferrer">
+                    Saiba mais
+                  </a>
+                </Button>
+                <p className="text-xs text-gray-500 text-center">
+                  {evento.hashtags.join(" ")}
+                </p>
+              </div>
+            </CardContent>
+          </Card>
+        </motion.div>
+      ))}
+    </div>
+  );
+}
